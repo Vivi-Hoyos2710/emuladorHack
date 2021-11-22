@@ -16,8 +16,14 @@ Memoria::~Memoria()
 
 string Memoria::leer(int numPosicion)
 {
-    return to_string(arrMemoria[numPosicion]);
-    //return arrMemoria[numPosicion].leer; cuando sea un byte se accederá directamente al string que contiene
+    //if(arrMemoria[numPosicion].leer.length() < 16){
+    if(to_string(arrMemoria[numPosicion]).length() < 16){
+        throw "la dirección a la que se intenta acceder presenta un error";
+    }
+    else{
+        return to_string(arrMemoria[numPosicion]);
+        //return arrMemoria[numPosicion].leer; cuando sea un byte se accederá directamente al string que contiene
+    }
 }
 
 void Memoria::escribir(int numPosicion, string valor)
